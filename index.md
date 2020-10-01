@@ -1,1 +1,2 @@
-# Strawp
+ - [Twitter](https://twitter.com/strawp)
+ - [Github](https://github.com/strawp)
