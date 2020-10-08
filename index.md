@@ -6,6 +6,7 @@ Highlights:
  - [zeropress](http://github.com/nettitude/zeropress) - Dumb script for finding dumb PHP mistakes
  - [version-detective](https://github.com/strawp/version-detective) - Work out a target site's framework version using git
  - [Random Scripts](https://github.com/strawp/random-scripts) - A few surprisingly useful tools that get used in pentests quite a lot 
+ - [swagger-hose](https://github.com/strawp/swagger-hose) - Ingest a whole bunch of swagger docs and squirt requests in to speed up pentest triage / fuzzing
 
 You can reach me on [@strawp](https://twitter.com/strawp).
 
