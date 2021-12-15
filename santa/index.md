@@ -48,7 +48,7 @@ I selected a VOIP provider (sipgate.co.uk) that was just going to provide me wit
 
 Once I'd got my sipgate account authorised I tried out `sipcmd2` but couldn't resolve an issue with the recorded audio coming through all distorted. I looked for another SIP client to try and found [Twinkle](https://github.com/LubosD/twinkle), which is an old but still pretty decent Linux VOIP client which also supports a decent range of command line options, perfect for scripting. It also has its own event-based scripting feature, so you can run custom scripts when a call is answered, someone rings etc.
 
-![Twinkle scripting settings](./santa/twinkle_scripts.png)
+![Twinkle scripting settings](twinkle_scripts.png)
 
 Twinkle does not seem to have any functionality for just playing audio down the line, however. More hacks required.
 
@@ -94,7 +94,7 @@ So, how this works is:
 
 All that is left is to make sure when the call comes through it shows "Santa" and we have a nice picture just to drill it home. 
 
-![Santa's contact profile](santa/contact.png)
+![Santa's contact profile](contact.png)
 
 ### Result
 
@@ -104,4 +104,4 @@ Just after I locked the front door, I executed
 sleep 200; ./call.sh
 ```
 
-and then drove all with all the family. The call came through perfectly, and they all lost their minds, including their mum who I hadn't told anything about what I had planned. **Success!**
+and then drove off with all the family in the car. The call came through perfectly, and they all lost their minds, including their mum who I hadn't told anything about what I had planned. **Success!**
