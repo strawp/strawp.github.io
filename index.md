@@ -8,5 +8,7 @@ Highlights:
  - [Random Scripts](https://github.com/strawp/random-scripts) - A few surprisingly useful tools that get used in pentests quite a lot 
  - [swagger-hose](https://github.com/strawp/swagger-hose) - Ingest a whole bunch of swagger docs and squirt requests in to speed up pentest triage / fuzzing
 
-You can reach me on [@strawp](https://twitter.com/strawp).
+You can reach me on:
 
+ - [@strawp](https://twitter.com/strawp)
+ - <a href="https://infosec.exchange/@Strawp" rel="me">@strawp@infosec.exchange</a>
