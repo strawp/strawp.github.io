@@ -2,13 +2,14 @@ I'm a CHECK Team Leader web app pentester and I largely build quick and dirty sc
 
 Highlights:
 
- - [xss_payloads](http://github.com/nettitude/xss_payloads) - Do better than `alert(1)`
- - [zeropress](http://github.com/nettitude/zeropress) - Dumb script for finding dumb PHP mistakes
+ - [pwnlyoffice](https://github.com/nettitude/pwnlyoffice)
+ - [xss_payloads](https://github.com/nettitude/xss_payloads) - Do better than `alert(1)`
+ - [zeropress](https://github.com/nettitude/zeropress) - Dumb script for finding dumb PHP mistakes
  - [version-detective](https://github.com/strawp/version-detective) - Work out a target site's framework version using git
  - [Random Scripts](https://github.com/strawp/random-scripts) - A few surprisingly useful tools that get used in pentests quite a lot 
  - [swagger-hose](https://github.com/strawp/swagger-hose) - Ingest a whole bunch of swagger docs and squirt requests in to speed up pentest triage / fuzzing
 
 You can reach me on:
 
- - [@strawp](https://twitter.com/strawp)
  - <a href="https://infosec.exchange/@Strawp" rel="me">@strawp@infosec.exchange</a>
+ - [@strawp](https://twitter.com/strawp)
