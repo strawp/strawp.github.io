@@ -2,7 +2,7 @@ I'm a CHECK Team Leader web app pentester and I largely build quick and dirty sc
 
 Highlights:
 
- - [pwnlyoffice](https://github.com/nettitude/pwnlyoffice)
+ - [pwnlyoffice](https://github.com/nettitude/pwnlyoffice) - Exploit ONLYOFFICE vulnerabilities for RCE
  - [xss_payloads](https://github.com/nettitude/xss_payloads) - Do better than `alert(1)`
  - [zeropress](https://github.com/nettitude/zeropress) - Dumb script for finding dumb PHP mistakes
  - [version-detective](https://github.com/strawp/version-detective) - Work out a target site's framework version using git
