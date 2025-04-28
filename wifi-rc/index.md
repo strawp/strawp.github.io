@@ -1,4 +1,4 @@
-## Wifi Enabling an 90s RC Car (non-destructively)
+## Wifi Enabling a 90s RC Car (non-destructively)
 
 ![Old car box](img/IMG20240625100305.jpg)
 
