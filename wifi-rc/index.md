@@ -1,10 +1,12 @@
 ## Wifi Enabling a 90s RC Car (non-destructively)
 
 ![Old car box](img/IMG20240625100305.jpg)
+Old car box
 
 I recently found and rescued an old radio controlled car which I had in the early 90s. It seemed in decent condition and I figured my kids could play with it. Sadly, when I got the transmitter out of the box, it had clearly had a 9V battery sat in it for 30 years and the alkaline fluid in it had done a number on the circuit traces.
 
 ![Corroded PCB traces](img/IMG20240625100139.jpg)
+Corroded PCB traces
 
 My first thought was to repair the traces, before I remembered a crucial detail: **I suck at soldering.** I can solder pins into place, but there's a certain artistry about repairing PCB traces that I do not have, aside from the fact that it's not totally obvious where the traces should even *be* in some places. So, requirements:
 
@@ -14,8 +16,10 @@ My first thought was to repair the traces, before I remembered a crucial detail:
 What to do then? The car itself seemed fine. How can I control the car if I don't have the controller? I noted the part number, `TJ7520`. Maybe someone makes a swap-in replacement for this? No. OK, maybe I can just bypass this whole controller system and put in something else. I've got Raspberry Pi Zero Ws and Teensies cluttering up boxes around my office. The outputs of the receiving circuit were pretty simple.
 
 ![Car innards](img/IMG20240615215046.jpg)
+Car innards
 
 ![Receiver outputs](img/IMG20240615215544.jpg)
+Receiver outputs
 
 Basically one set of wires to deliver power to the motor in the rear and a couple of tiny wires to control the electromagnet-driven steering in the front. If I took the old receiver out and put a Pi Zero in its place I can easily configure it to power the wheels and steering, plus I could even have variable speed, which the original controller never had.
 
@@ -26,6 +30,7 @@ OK, what about if the Pi *itself* was the transmitter? Can I turn a Raspberry Pi
 So, taking off the original body of the car and taping a USB battery pack and a Raspberry Pi Zero W to it, I then also have the option of attaching a camera on the front for potential first-person view action!
 
 ![Slick mod, right? Right?](img/IMG20240624153204.jpg)
+Slick mod, right? Right?
 
 Mmm, nice! The only output needed from the Pi is a single GPIO connection direct into the antenna mounting point of the car - no soldering.
 
@@ -41,16 +46,19 @@ Streaming from a Pi Zero would never get you racing drone levels of latency on t
 The idea is not to get nice pictures but to throw pixels down the wire fast enough that you can just about see what's going on and react quickly enough for it to be driven remotely. Of course, the faster the Pi, the less of a sacrifice you'd need to make.
 
 ![View from the car](img/image-20240625120743736.png)
+View from the car
 
 ### Creating Radio Signals
 
 Then, to work out what pattern of PWM to make the car move, I experimented with [pi-rc](https://github.com/bskari/pi-rc). 
 
 ![Fuzzing the control signal with pi-rc](img/image-20240625112843462.png)
+Fuzzing the control signal with pi-rc
 
 Immediately I got the car going forwards but then things started behaving erratically. I wasn't getting a consistent reverse or steering for any of the pulse signal combinations. Researching this further, I found [this one blog in Spanish](https://reparar-cochesrc.blogspot.com/2015/12/emisora-nikko-de-6-funciones-y.html) using the TJ7520 board. It turns out that this board doesn't have as sophisticated control scheme as `pi-rc` was designed for. There is no synchronisation pulse followed by a control signal, it's just a constant flow of a single PWM wave for each command. The key part of that blog post was this (Google translated):
 
 ![The blog](img/image-20240625113407018.png)
+The blog
 
 Basically this is saying that there is a signal which consists of about 2.7ms pulse and then 2.7ms of silence repeated for forwards which is a cycle of a frequency at about 375Hz and then pulses of 1.1ms each which equates to 900Hz for reverse, then to steer left and right you just vary what proportion of the cycle is pulse and what proportion is silence. That ratio is known as the *Duty Cycle*. A duty cycle of 25% makes the steering turn left, a duty cycle of 75% makes the steering go right. By combining just these two variables - the duty cycle and the pulse cycle frequency you get all of the controls for the car. The controller in that blog post was running at 27MHz, not 40.685MHz as mine was but that shouldn't matter. I then also checked that the other relevant components of the transmitter that were detailed in the blog were the same. The circuit which makes the cycle of pulses is called an [Astable Multivibrator](https://www.electronics-tutorials.ws/waveforms/astable.html). The duty cycle and frequency of the pulses is determined by two capacitors and two resistors. These had the same values as the blog post, that meant that the pulse cycles would be the same in my car.
 
@@ -125,6 +133,7 @@ Easiest way to get this to run on boot is with a `@reboot` in the normal user's 
 The kids thought it was hilarious and chased it around and around the house as I drove it, listening on from upstairs. Then they started to go Robot Wars on it and started pitting it against their various other remote control toys. With a tiny front-facing field of view I stood no chance, getting blind sided at every turn.
 
 ![Car-eye view of the dining room at 160x120](img/image-20250428135859723.png)
+Car-eye view of the dining room at 160x120
 
 They then tested it out and have done pretty well driving it considering the lag and weird binary steering. It does leave black tyre marks on stuff when it crashes though 😬
 
